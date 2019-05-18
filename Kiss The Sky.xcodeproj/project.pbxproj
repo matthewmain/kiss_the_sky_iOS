@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2EEA5DE32290B2D30028BC31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */; };
+		2EEA5DE52290B2D30028BC31 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE42290B2D30028BC31 /* GameScene.sks */; };
+		2EEA5DE92290B2D30028BC31 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE82290B2D30028BC31 /* GameScene.swift */; };
+		2EEA5DEB2290B2D30028BC31 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DEA2290B2D30028BC31 /* GameViewController.swift */; };
+		2EEA5DEE2290B2D30028BC31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA5DEC2290B2D30028BC31 /* Main.storyboard */; };
+		2EEA5DF02290B2D50028BC31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA5DEF2290B2D50028BC31 /* Assets.xcassets */; };
+		2EEA5DF32290B2D50028BC31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA5DF12290B2D50028BC31 /* LaunchScreen.storyboard */; };
+		2EEA5DFE2290B2D50028BC31 /* Kiss_The_SkyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DFD2290B2D50028BC31 /* Kiss_The_SkyTests.swift */; };
+		2EEA5E092290B2D50028BC31 /* Kiss_The_SkyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5E082290B2D50028BC31 /* Kiss_The_SkyUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2EEA5DFA2290B2D50028BC31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EEA5DD72290B2D30028BC31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EEA5DDE2290B2D30028BC31;
+			remoteInfo = "Kiss The Sky";
+		};
+		2EEA5E052290B2D50028BC31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EEA5DD72290B2D30028BC31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EEA5DDE2290B2D30028BC31;
+			remoteInfo = "Kiss The Sky";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2EEA5DDF2290B2D30028BC31 /* Kiss The Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiss The Sky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2EEA5DE42290B2D30028BC31 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		2EEA5DE82290B2D30028BC31 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		2EEA5DEA2290B2D30028BC31 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		2EEA5DED2290B2D30028BC31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2EEA5DEF2290B2D50028BC31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2EEA5DF22290B2D50028BC31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2EEA5DF42290B2D50028BC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EEA5DF92290B2D50028BC31 /* Kiss The SkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kiss The SkyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EEA5DFD2290B2D50028BC31 /* Kiss_The_SkyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kiss_The_SkyTests.swift; sourceTree = "<group>"; };
+		2EEA5DFF2290B2D50028BC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EEA5E042290B2D50028BC31 /* Kiss The SkyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kiss The SkyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EEA5E082290B2D50028BC31 /* Kiss_The_SkyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kiss_The_SkyUITests.swift; sourceTree = "<group>"; };
+		2EEA5E0A2290B2D50028BC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2EEA5DDC2290B2D30028BC31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EEA5DF62290B2D50028BC31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EEA5E012290B2D50028BC31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2EEA5DD62290B2D30028BC31 = {
+			isa = PBXGroup;
+			children = (
+				2EEA5DE12290B2D30028BC31 /* Kiss The Sky */,
+				2EEA5DFC2290B2D50028BC31 /* Kiss The SkyTests */,
+				2EEA5E072290B2D50028BC31 /* Kiss The SkyUITests */,
+				2EEA5DE02290B2D30028BC31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2EEA5DE02290B2D30028BC31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2EEA5DDF2290B2D30028BC31 /* Kiss The Sky.app */,
+				2EEA5DF92290B2D50028BC31 /* Kiss The SkyTests.xctest */,
+				2EEA5E042290B2D50028BC31 /* Kiss The SkyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EEA5DE12290B2D30028BC31 /* Kiss The Sky */ = {
+			isa = PBXGroup;
+			children = (
+				2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */,
+				2EEA5DE42290B2D30028BC31 /* GameScene.sks */,
+				2EEA5DE82290B2D30028BC31 /* GameScene.swift */,
+				2EEA5DEA2290B2D30028BC31 /* GameViewController.swift */,
+				2EEA5DEC2290B2D30028BC31 /* Main.storyboard */,
+				2EEA5DEF2290B2D50028BC31 /* Assets.xcassets */,
+				2EEA5DF12290B2D50028BC31 /* LaunchScreen.storyboard */,
+				2EEA5DF42290B2D50028BC31 /* Info.plist */,
+			);
+			path = "Kiss The Sky";
+			sourceTree = "<group>";
+		};
+		2EEA5DFC2290B2D50028BC31 /* Kiss The SkyTests */ = {
+			isa = PBXGroup;
+			children = (
+				2EEA5DFD2290B2D50028BC31 /* Kiss_The_SkyTests.swift */,
+				2EEA5DFF2290B2D50028BC31 /* Info.plist */,
+			);
+			path = "Kiss The SkyTests";
+			sourceTree = "<group>";
+		};
+		2EEA5E072290B2D50028BC31 /* Kiss The SkyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2EEA5E082290B2D50028BC31 /* Kiss_The_SkyUITests.swift */,
+				2EEA5E0A2290B2D50028BC31 /* Info.plist */,
+			);
+			path = "Kiss The SkyUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EEA5DDE2290B2D30028BC31 /* Kiss The Sky */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EEA5E0D2290B2D50028BC31 /* Build configuration list for PBXNativeTarget "Kiss The Sky" */;
+			buildPhases = (
+				2EEA5DDB2290B2D30028BC31 /* Sources */,
+				2EEA5DDC2290B2D30028BC31 /* Frameworks */,
+				2EEA5DDD2290B2D30028BC31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kiss The Sky";
+			productName = "Kiss The Sky";
+			productReference = 2EEA5DDF2290B2D30028BC31 /* Kiss The Sky.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2EEA5DF82290B2D50028BC31 /* Kiss The SkyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EEA5E102290B2D50028BC31 /* Build configuration list for PBXNativeTarget "Kiss The SkyTests" */;
+			buildPhases = (
+				2EEA5DF52290B2D50028BC31 /* Sources */,
+				2EEA5DF62290B2D50028BC31 /* Frameworks */,
+				2EEA5DF72290B2D50028BC31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2EEA5DFB2290B2D50028BC31 /* PBXTargetDependency */,
+			);
+			name = "Kiss The SkyTests";
+			productName = "Kiss The SkyTests";
+			productReference = 2EEA5DF92290B2D50028BC31 /* Kiss The SkyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2EEA5E032290B2D50028BC31 /* Kiss The SkyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EEA5E132290B2D50028BC31 /* Build configuration list for PBXNativeTarget "Kiss The SkyUITests" */;
+			buildPhases = (
+				2EEA5E002290B2D50028BC31 /* Sources */,
+				2EEA5E012290B2D50028BC31 /* Frameworks */,
+				2EEA5E022290B2D50028BC31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2EEA5E062290B2D50028BC31 /* PBXTargetDependency */,
+			);
+			name = "Kiss The SkyUITests";
+			productName = "Kiss The SkyUITests";
+			productReference = 2EEA5E042290B2D50028BC31 /* Kiss The SkyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2EEA5DD72290B2D30028BC31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Matthew Main";
+				TargetAttributes = {
+					2EEA5DDE2290B2D30028BC31 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					2EEA5DF82290B2D50028BC31 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 2EEA5DDE2290B2D30028BC31;
+					};
+					2EEA5E032290B2D50028BC31 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 2EEA5DDE2290B2D30028BC31;
+					};
+				};
+			};
+			buildConfigurationList = 2EEA5DDA2290B2D30028BC31 /* Build configuration list for PBXProject "Kiss The Sky" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2EEA5DD62290B2D30028BC31;
+			productRefGroup = 2EEA5DE02290B2D30028BC31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2EEA5DDE2290B2D30028BC31 /* Kiss The Sky */,
+				2EEA5DF82290B2D50028BC31 /* Kiss The SkyTests */,
+				2EEA5E032290B2D50028BC31 /* Kiss The SkyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2EEA5DDD2290B2D30028BC31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EEA5DEE2290B2D30028BC31 /* Main.storyboard in Resources */,
+				2EEA5DE52290B2D30028BC31 /* GameScene.sks in Resources */,
+				2EEA5DF02290B2D50028BC31 /* Assets.xcassets in Resources */,
+				2EEA5DF32290B2D50028BC31 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EEA5DF72290B2D50028BC31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EEA5E022290B2D50028BC31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EEA5DDB2290B2D30028BC31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EEA5DE92290B2D30028BC31 /* GameScene.swift in Sources */,
+				2EEA5DEB2290B2D30028BC31 /* GameViewController.swift in Sources */,
+				2EEA5DE32290B2D30028BC31 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EEA5DF52290B2D50028BC31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EEA5DFE2290B2D50028BC31 /* Kiss_The_SkyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EEA5E002290B2D50028BC31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EEA5E092290B2D50028BC31 /* Kiss_The_SkyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2EEA5DFB2290B2D50028BC31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EEA5DDE2290B2D30028BC31 /* Kiss The Sky */;
+			targetProxy = 2EEA5DFA2290B2D50028BC31 /* PBXContainerItemProxy */;
+		};
+		2EEA5E062290B2D50028BC31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EEA5DDE2290B2D30028BC31 /* Kiss The Sky */;
+			targetProxy = 2EEA5E052290B2D50028BC31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2EEA5DEC2290B2D30028BC31 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EEA5DED2290B2D30028BC31 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2EEA5DF12290B2D50028BC31 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EEA5DF22290B2D50028BC31 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2EEA5E0B2290B2D50028BC31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2EEA5E0C2290B2D50028BC31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2EEA5E0E2290B2D50028BC31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWYST3RDCD;
+				INFOPLIST_FILE = "Kiss The Sky/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "in.matthewma.Kiss-The-Sky";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2EEA5E0F2290B2D50028BC31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWYST3RDCD;
+				INFOPLIST_FILE = "Kiss The Sky/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "in.matthewma.Kiss-The-Sky";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2EEA5E112290B2D50028BC31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWYST3RDCD;
+				INFOPLIST_FILE = "Kiss The SkyTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "in.matthewma.Kiss-The-SkyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kiss The Sky.app/Kiss The Sky";
+			};
+			name = Debug;
+		};
+		2EEA5E122290B2D50028BC31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWYST3RDCD;
+				INFOPLIST_FILE = "Kiss The SkyTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "in.matthewma.Kiss-The-SkyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kiss The Sky.app/Kiss The Sky";
+			};
+			name = Release;
+		};
+		2EEA5E142290B2D50028BC31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWYST3RDCD;
+				INFOPLIST_FILE = "Kiss The SkyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "in.matthewma.Kiss-The-SkyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kiss The Sky";
+			};
+			name = Debug;
+		};
+		2EEA5E152290B2D50028BC31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWYST3RDCD;
+				INFOPLIST_FILE = "Kiss The SkyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "in.matthewma.Kiss-The-SkyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kiss The Sky";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2EEA5DDA2290B2D30028BC31 /* Build configuration list for PBXProject "Kiss The Sky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EEA5E0B2290B2D50028BC31 /* Debug */,
+				2EEA5E0C2290B2D50028BC31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EEA5E0D2290B2D50028BC31 /* Build configuration list for PBXNativeTarget "Kiss The Sky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EEA5E0E2290B2D50028BC31 /* Debug */,
+				2EEA5E0F2290B2D50028BC31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EEA5E102290B2D50028BC31 /* Build configuration list for PBXNativeTarget "Kiss The SkyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EEA5E112290B2D50028BC31 /* Debug */,
+				2EEA5E122290B2D50028BC31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EEA5E132290B2D50028BC31 /* Build configuration list for PBXNativeTarget "Kiss The SkyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EEA5E142290B2D50028BC31 /* Debug */,
+				2EEA5E152290B2D50028BC31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2EEA5DD72290B2D30028BC31 /* Project object */;
+}
