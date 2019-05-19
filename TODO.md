@@ -7,6 +7,6 @@ v1 (MVP)
 - [ ] game sequence with plant interaction and height tracking
 - [ ] overall app structure and flow with: landing, mode options, game interface, saved games, and high scores.
 
-V2
+v2
 
 - ...
