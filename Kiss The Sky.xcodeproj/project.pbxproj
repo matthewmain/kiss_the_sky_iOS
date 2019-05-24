@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E4A377F2292F6EC00B86596 /* GameCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A377E2292F6EC00B86596 /* GameCamera.swift */; };
 		2E4A378122934C2400B86596 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A378022934C2400B86596 /* Configuration.swift */; };
+		2EB07809229461A500204C17 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB07808229461A500204C17 /* Point.swift */; };
+		2EDEE15B22984E8F0066A51A /* Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEE15A22984E8F0066A51A /* Span.swift */; };
+		2EDEE189229890360066A51A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEE188229890350066A51A /* Settings.swift */; };
 		2EEA5DE32290B2D30028BC31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */; };
 		2EEA5DE52290B2D30028BC31 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE42290B2D30028BC31 /* GameScene.sks */; };
 		2EEA5DE92290B2D30028BC31 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE82290B2D30028BC31 /* GameScene.swift */; };
@@ -38,8 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E4A377E2292F6EC00B86596 /* GameCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCamera.swift; sourceTree = SOURCE_ROOT; };
+		2E4A377E2292F6EC00B86596 /* GameCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameCamera.swift; path = "Kiss The Sky/GameCamera.swift"; sourceTree = SOURCE_ROOT; };
 		2E4A378022934C2400B86596 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		2EB07808229461A500204C17 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		2EDEE15A22984E8F0066A51A /* Span.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Span.swift; sourceTree = "<group>"; };
+		2EDEE188229890350066A51A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2EEA5DDF2290B2D30028BC31 /* Kiss The Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiss The Sky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EEA5DE42290B2D30028BC31 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -82,10 +88,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E4A377D2292F6B000B86596 /* Custom Nodes */ = {
+		2E4BC6AF22958C5500509E9E /* Custom Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				2EDEE188229890350066A51A /* Settings.swift */,
 				2E4A377E2292F6EC00B86596 /* GameCamera.swift */,
+				2EB07808229461A500204C17 /* Point.swift */,
+				2EDEE15A22984E8F0066A51A /* Span.swift */,
 			);
 			name = "Custom Nodes";
 			sourceTree = "<group>";
@@ -120,8 +129,8 @@
 		2EB8987C2291F405009DA811 /* Template */ = {
 			isa = PBXGroup;
 			children = (
-				2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */,
 				2EEA5DF42290B2D50028BC31 /* Info.plist */,
+				2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */,
 				2E4A378022934C2400B86596 /* Configuration.swift */,
 			);
 			name = Template;
@@ -150,11 +159,11 @@
 		2EEA5DE12290B2D30028BC31 /* Kiss The Sky */ = {
 			isa = PBXGroup;
 			children = (
-				2E4A377D2292F6B000B86596 /* Custom Nodes */,
 				2EB898772291F383009DA811 /* UI */,
-				2EB8987A2291F3C1009DA811 /* Scenes */,
-				2EB8987B2291F3DA009DA811 /* ViewController */,
 				2EB8987C2291F405009DA811 /* Template */,
+				2EB8987B2291F3DA009DA811 /* ViewController */,
+				2EB8987A2291F3C1009DA811 /* Scenes */,
+				2E4BC6AF22958C5500509E9E /* Custom Nodes */,
 			);
 			path = "Kiss The Sky";
 			sourceTree = "<group>";
@@ -311,7 +320,10 @@
 			files = (
 				2EEA5DE92290B2D30028BC31 /* GameScene.swift in Sources */,
 				2E4A378122934C2400B86596 /* Configuration.swift in Sources */,
+				2EDEE189229890360066A51A /* Settings.swift in Sources */,
+				2EB07809229461A500204C17 /* Point.swift in Sources */,
 				2EEA5DEB2290B2D30028BC31 /* GameViewController.swift in Sources */,
+				2EDEE15B22984E8F0066A51A /* Span.swift in Sources */,
 				2E4A377F2292F6EC00B86596 /* GameCamera.swift in Sources */,
 				2EEA5DE32290B2D30028BC31 /* AppDelegate.swift in Sources */,
 			);

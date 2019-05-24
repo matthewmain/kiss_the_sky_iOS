@@ -8,11 +8,13 @@
 
 import SpriteKit
 
+
 class GameCamera: SKCameraNode {
     
     func setConstraints(with scene: SKScene, and frame: CGRect, to node: SKNode?) {
+        
         let scaledSize = CGSize(width: scene.size.width * xScale, height: scene.size.height * yScale)  // zoom factor as scaled size
-        let boardContentRect = frame  // a virtual rectangle that matches the device screen
+        let boardContentRect = frame  // a virtual rectangle that matches the device screen borders
         
         // don't zoom out past scene borders
         let xInset = min(scaledSize.width / 2, boardContentRect.width / 2)
@@ -25,6 +27,7 @@ class GameCamera: SKCameraNode {
         let levelEdgeConstraint = SKConstraint.positionX(xRange, y: yRange)
         
         constraints = [levelEdgeConstraint]
+        
     }
 
 }
