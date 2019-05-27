@@ -43,8 +43,8 @@ class GameScene: SKScene {
         physicsBody?.categoryBitMask = screenEdgesCollisionCategory
         physicsBody?.collisionBitMask = moveableObjectsCollisionCategory
 
-        //Seeds
-        createSeed()
+        //Seeds (move later)
+        for _ in 1...5 { createSeed() }
         
         //Points & Spans
         for point in points { addChild(point) }
