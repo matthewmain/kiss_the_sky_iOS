@@ -9,6 +9,7 @@
 import SpriteKit
 
 
+
 class GameCamera: SKCameraNode {
     
     func setConstraints(with scene: SKScene, and frame: CGRect, to node: SKNode?) {

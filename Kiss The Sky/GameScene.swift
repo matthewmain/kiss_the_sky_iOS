@@ -6,31 +6,14 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
+
 import SpriteKit
 import GameplayKit
 
+
 let deviceBounds = UIScreen.main.fixedCoordinateSpace.bounds  // current device screen size (call as .height or .width)
-
-
-
-
-let boxSize = deviceBounds.width*0.1
-let boxCenter = CGPoint(x: deviceBounds.width*0.5, y: deviceBounds.height*0.75)
-
-var point1 = Point(position: CGPoint(x: boxCenter.x-boxSize/2, y: boxCenter.y+boxSize/2))
-var point2 = Point(position: CGPoint(x: boxCenter.x+boxSize/2, y: boxCenter.y+boxSize/2))
-var point3 = Point(position: CGPoint(x: boxCenter.x+boxSize/2, y: boxCenter.y-boxSize/2))
-var point4 = Point(position: CGPoint(x: boxCenter.x-boxSize/2, y: boxCenter.y-boxSize/2))
-
-var span1 = Span(connecting: point1, and: point2)
-var span2 = Span(connecting: point2, and: point3)
-var span3 = Span(connecting: point3, and: point4)
-var span4 = Span(connecting: point4, and: point1)
-var span5 = Span(connecting: point1, and: point3)
-
-
-
-var boxShapes: [SKShapeNode] = []
+let screenWidth: CGFloat = deviceBounds.width  // UNIVERSAL UNIT
+let screenHeight: CGFloat = deviceBounds.height
 
 
 class GameScene: SKScene {
@@ -50,33 +33,22 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
+        
         addBackground()
         addCamera()
         setUpGestureRecognizers()
         
-        
-        
-    
-        //Spring Joint Box (points as SKSpriteNodes, spans as SKPhysicsJointSprings)
-        
+        //screen edges physics body
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody?.categoryBitMask = screenEdgesCollisionCategory
         physicsBody?.collisionBitMask = moveableObjectsCollisionCategory
 
-        addChild(point1)
-        addChild(point2)
-        addChild(point3)
-        addChild(point4)
+        //Seeds
+        createSeed()
         
-        physicsWorld.add(span1.spring)
-        physicsWorld.add(span2.spring)
-        physicsWorld.add(span3.spring)
-        physicsWorld.add(span4.spring)
-        physicsWorld.add(span5.spring)
-
-        
-
-        
+        //Points & Spans
+        for point in points { addChild(point) }
+        for span in spans { physicsWorld.add(span.spring) }
         
     }
     
@@ -85,31 +57,14 @@ class GameScene: SKScene {
     
     override func didSimulatePhysics() {
     
-        let boxPath = CGMutablePath()
-        boxPath.move(to: point1.position)
-        boxPath.addLine(to: point2.position)
-        boxPath.addLine(to: point3.position)
-        boxPath.addLine(to: point4.position)
-        boxPath.closeSubpath()
+        //shape rendering
+        removeChildren(in: shapes)  // clears last frame's shape children from GameScene
         
-        let boxShape = SKShapeNode()
-        boxShape.path = boxPath
-        boxShape.fillColor = .red
-        boxShape.lineWidth = 0.5
-        boxShape.strokeColor = .black
-        boxShape.glowWidth = 0.2
-        boxShape.zPosition = 1
+        render()  // renders new frame's shapes
         
-        removeChildren(in: boxShapes)  // clears last frame's box shape children from GameScene
-        boxShapes = []  // clears last frame's box shapes from collection array
-        
-        boxShapes.append(boxShape)  // adds new box shape to collection array
-        addChild(boxShape)  // adds new box shape as child of GameScene
-        
+        for shape in shapes { addChild(shape) }  // adds new shapes as children to GameScene
         
     }
-    
-    
     
     
     func addBackground() {
