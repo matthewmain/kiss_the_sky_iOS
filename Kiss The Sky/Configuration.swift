@@ -51,8 +51,3 @@ func distance(from point1: CGPoint, to point2: CGPoint ) -> CGFloat {
 
 
 
-
-
-
-
-

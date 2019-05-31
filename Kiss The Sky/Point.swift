@@ -20,7 +20,7 @@ class Point: SKSpriteNode {
     
     let id: Int
     
-    init(position: CGPoint, radius: CGFloat = screenWidth*0.001) {
+    init(position: CGPoint, radius: CGFloat = screenHeight*0.001) {
         pointCount += 1
         self.id = pointCount
         super.init(texture: nil, color: .clear, size: CGSize(width: 0.0, height: 0.0))
@@ -40,7 +40,7 @@ class Point: SKSpriteNode {
 
 
 
-func addPoint(at position: CGPoint, radius: CGFloat = screenWidth*0.001) -> Point {
+func addPoint(at position: CGPoint, radius: CGFloat = screenHeight*0.001) -> Point {
     points.append( Point(position: position, radius: radius) )
     return points[points.count-1]
 }

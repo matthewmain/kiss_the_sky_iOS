@@ -14,7 +14,7 @@ import SpriteKit
 var seeds: [Seed] = []
 var seedCount: Int = 0
 
-var initialSeedWidth: CGFloat = screenWidth*0.014
+var initialSeedWidth: CGFloat = screenHeight*0.014
 var seedRestitution: CGFloat = 0.5
 
 
@@ -128,7 +128,7 @@ func renderSeeds() {
                            control2: CGPoint(x: h4x, y: h4y))
         seed.shape.path = seed.path
         seed.shape.fillColor = UIColor(red:73.0/255.0, green:5.0/255.0, blue:0.0/255.0, alpha: seed.opacity)
-        seed.shape.lineWidth = screenWidth*0.001
+        seed.shape.lineWidth = screenHeight*0.001
         seed.shape.strokeColor = UIColor(red:0.0/255.0, green:0.0/255.0, blue:0.0/255.0, alpha: seed.opacity)
         seed.shape.glowWidth = seed.shape.lineWidth/5
         seed.shape.zPosition = 1

@@ -12,8 +12,8 @@ import GameplayKit
 
 
 let deviceBounds = UIScreen.main.fixedCoordinateSpace.bounds  // current device screen size (call as .height or .width)
-let screenWidth: CGFloat = deviceBounds.width  // UNIVERSAL UNIT
-let screenHeight: CGFloat = deviceBounds.height
+let screenWidth: CGFloat = deviceBounds.width
+let screenHeight: CGFloat = deviceBounds.height    // UNIVERSAL UNIT
 
 
 
@@ -31,6 +31,7 @@ class GameScene: SKScene {
     let maxZoomRatio: CGFloat = 1  // maximum zoom ratio of device screen size
     var panRecognizer = UIPanGestureRecognizer()  // recognizes pan gestures
     var pinchRecognizer = UIPinchGestureRecognizer()  // recognizes pinch gestures
+    
     
     
     override func didMove(to view: SKView) {
@@ -71,6 +72,7 @@ class GameScene: SKScene {
         for shape in shapes { addChild(shape) }  // adds new shapes as children to GameScene
         
     }
+    
     
     
     func addBackground() {
