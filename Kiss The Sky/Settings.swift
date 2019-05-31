@@ -12,8 +12,9 @@ import Foundation
 
 let viewDeviceFramesVisualizer: Bool = false
 
+let nothingCollisionCategory: UInt32 = 0b0000
 let screenEdgesCollisionCategory: UInt32 = 0b0001
-let moveableObjectsCollisionCategory: UInt32 = 0b0010
+let solidMoveableObjectsCollisionCategory: UInt32 = 0b0010
 
 
 

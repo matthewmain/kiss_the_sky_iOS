@@ -16,6 +16,7 @@ let screenWidth: CGFloat = deviceBounds.width  // UNIVERSAL UNIT
 let screenHeight: CGFloat = deviceBounds.height
 
 
+
 class GameScene: SKScene {
     
     var entities = [GKEntity]()
@@ -41,12 +42,12 @@ class GameScene: SKScene {
         //screen edges physics body
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody?.categoryBitMask = screenEdgesCollisionCategory
-        physicsBody?.collisionBitMask = moveableObjectsCollisionCategory
+        physicsBody?.collisionBitMask = solidMoveableObjectsCollisionCategory
 
-        //Seeds (move later)
-        for _ in 1...5 { createSeed() }
+        //initial seeds (move later)
+        for _ in 1...10 { createSeed(parentPlant: nil) }
         
-        //Points & Spans
+        //points & spans
         for point in points { addChild(point) }
         for span in spans { physicsWorld.add(span.spring) }
         
@@ -54,14 +55,19 @@ class GameScene: SKScene {
     
     
     
+    override func update(_ currentTime: CFTimeInterval) {
+        
+        updateAll()
+        
+    }
+    
+    
     
     override func didSimulatePhysics() {
     
-        //shape rendering
+        //render
         removeChildren(in: shapes)  // clears last frame's shape children from GameScene
-        
-        render()  // renders new frame's shapes
-        
+        renderAll()  // renders new frame's shapes
         for shape in shapes { addChild(shape) }  // adds new shapes as children to GameScene
         
     }

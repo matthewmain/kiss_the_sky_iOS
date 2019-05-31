@@ -11,10 +11,12 @@ import SpriteKit
 import CoreGraphics
 
 
+
 var shapes: [SKShapeNode] = []
 
 
-func render() {
+
+func renderAll() {
     
     shapes = []  // clears last frame's shapes from collection array
 
