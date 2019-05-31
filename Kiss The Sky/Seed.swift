@@ -6,9 +6,11 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-
 import SpriteKit
 
+
+
+////////////////// SEED //////////////////
 
 
 var seeds: [Seed] = []
@@ -16,7 +18,6 @@ var seedCount: Int = 0
 
 var initialSeedWidth: CGFloat = screenHeight*0.014
 var seedRestitution: CGFloat = 0.5
-
 
 
 class Seed {
@@ -33,7 +34,6 @@ class Seed {
     let baseWidth: CGFloat
     let tipWidth: CGFloat
     let spanLength: CGFloat
-    
     var point1PreviousPosition: CGPoint?// = CGPoint(x:0,y:0)
     var point2PreviousPosition: CGPoint?// = CGPoint(x:0,y:0)
     
@@ -87,36 +87,29 @@ func createSeed(parentPlant: Plant?/*, zygoteGenotype: Genotype*/) /*-> Seed*/ {
 
 
 func renderSeeds() {
-    
     for seed in seeds {
-        
         seed.path = CGMutablePath()  // clears previous path
-        
         //reference points & lengths
         let p1p: CGPoint = seed.point1.position  // point 1 position
         let p2p: CGPoint = seed.point2.position  // point 2 position
         let spl: CGFloat = seed.span.length  // span length
         let hbl: CGFloat = seed.baseWidth*0.85  // base handles length
         let htl: CGFloat = seed.tipWidth  // tip handles length
-        
         //reference points (seed base & tip)
         let r1x: CGFloat = p1p.x - ( p2p.x - p1p.x ) * (seed.baseWidth*0.5 / spl)  // reference 1 x (seed base)
         let r1y: CGFloat = p1p.y - ( p2p.y - p1p.y ) * (seed.baseWidth*0.5 / spl)  // reference 1 y (seed base)
         let r2x: CGFloat = p2p.x + ( p2p.x - p1p.x ) * (seed.tipWidth*0.5 / spl)  // reference 2 x (seed tip)
         let r2y: CGFloat = p2p.y + ( p2p.y - p1p.y ) * (seed.tipWidth*0.5 / spl)  // reference 2 y (seed tip)
-        
         //top bezier handles points
         let h1x: CGFloat = r1x + hbl * ( p1p.y - r1y ) / (seed.baseWidth*0.5);  // upper left handle
         let h1y: CGFloat = r1y - hbl * ( p1p.x - r1x ) / (seed.baseWidth*0.5);  // upper left handle
         let h2x: CGFloat = r2x - htl * ( p2p.y - r2y ) / (seed.tipWidth*0.5);  // upper right handle
         let h2y: CGFloat = r2y - htl * ( r2x - p2p.x ) / (seed.tipWidth*0.5);  // upper right handle
-        
         //bottom bezier handles points
         let h3x: CGFloat = r2x + htl * ( p2p.y - r2y ) / (seed.tipWidth*0.5);  // lower right handle
         let h3y: CGFloat = r2y + htl * ( r2x - p2p.x ) / (seed.tipWidth*0.5);  // lower right handle
         let h4x: CGFloat = r1x - hbl * ( p1p.y - r1y ) / (seed.baseWidth*0.5);  // lower left handle
         let h4y: CGFloat = r1y + hbl * ( p1p.x - r1x ) / (seed.baseWidth*0.5);  // lower left handle
-        
         //rendering
         seed.path.move(to: CGPoint(x: r1x, y: r1y))
         seed.path.addCurve(to: CGPoint(x: r2x, y: r2y),
@@ -133,9 +126,7 @@ func renderSeeds() {
         seed.shape.glowWidth = seed.shape.lineWidth/5
         seed.shape.zPosition = 1
         shapes.append(seed.shape)
-        
     }
-    
 }
 
 

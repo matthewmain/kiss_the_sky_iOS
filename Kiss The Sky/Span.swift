@@ -6,14 +6,15 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-
 import SpriteKit
 
 
 
+////////////////// SPAN //////////////////
+
+
 var spans: [Span] = []
 var spanCount: Int = 0
-
 
 
 class Span {

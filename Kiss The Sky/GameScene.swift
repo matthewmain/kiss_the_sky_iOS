@@ -6,9 +6,9 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-
 import SpriteKit
 import GameplayKit
+
 
 
 let deviceBounds = UIScreen.main.fixedCoordinateSpace.bounds  // current device screen size (call as .height or .width)
@@ -58,6 +58,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: CFTimeInterval) {
         
+        //update all calculations
         updateAll()
         
     }
@@ -66,7 +67,7 @@ class GameScene: SKScene {
     
     override func didSimulatePhysics() {
     
-        //render
+        //render all visible displays
         removeChildren(in: shapes)  // clears last frame's shape children from GameScene
         renderAll()  // renders new frame's shapes
         for shape in shapes { addChild(shape) }  // adds new shapes as children to GameScene

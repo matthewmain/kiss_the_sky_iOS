@@ -6,14 +6,14 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-
 import SpriteKit
-import CoreGraphics
 
+
+
+////////////////// RENDERER //////////////////
 
 
 var shapes: [SKShapeNode] = []
-
 
 
 func renderAll() {

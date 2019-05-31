@@ -6,14 +6,15 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-
 import SpriteKit
 
 
 
+////////////////// PLANT //////////////////
+
+
 var plants: [Plant] = []
 var plantCount: Int = 0
-
 
 
 class Plant {
@@ -21,18 +22,20 @@ class Plant {
     let id: Int
     let sourceSeed: Seed
     let generation: Int
+    //let germinationYear: Int
     
     init( sourceSeed: Seed ) {
         plantCount += 1
         self.id = plantCount
         self.sourceSeed = sourceSeed
         self.generation = sourceSeed.generation
+        //self.germinationYear = currentYear
     }
     
     var sourceSeedHasGerminated: Bool = false
     var sourceSeedHasBeenRemoved: Bool = false
-//    this.germinationYear = currentYear;  // germination year
-//    this.age = 0;  // plant age in worldtime units
+    var age: Int = 0  // plant age in worldtime units (frames)
+    
 //    this.segments = []; this.segmentCount = 0;
 //    this.flowers = []; this.flowerCount = 0;
 //    this.xLocation = null;

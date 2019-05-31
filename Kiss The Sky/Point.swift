@@ -6,14 +6,15 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-
 import SpriteKit
 
 
 
+////////////////// POINT //////////////////
+
+
 var points: [Point] = []
 var pointCount: Int = 0
-
 
 
 class Point: SKSpriteNode {
