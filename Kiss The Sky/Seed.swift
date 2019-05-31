@@ -26,16 +26,16 @@ class Seed {
     let parentPlantId: Int?
     var resultingPlantId: Int?
     let generation: Int
-    //let genotype: Genotype
-    //let phenotype: Phenotype
+        //let genotype: Genotype
+        //let phenotype: Phenotype
     let point1: Point
     let point2: Point
     let span: Span
     let baseWidth: CGFloat
     let tipWidth: CGFloat
     let spanLength: CGFloat
-    var point1PreviousPosition: CGPoint?// = CGPoint(x:0,y:0)
-    var point2PreviousPosition: CGPoint?// = CGPoint(x:0,y:0)
+    var point1PreviousPosition: CGPoint?
+    var point2PreviousPosition: CGPoint?
     
     init(parentPlant: Plant?/*, zygoteGenotype: Genotype*/) {
         seedCount += 1

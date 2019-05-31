@@ -22,65 +22,78 @@ class Plant {
     let id: Int
     let sourceSeed: Seed
     let generation: Int
-    //let germinationYear: Int
-    
+        //let germinationYear: Int
+    var maxEnergyLevel: CGFloat
+        //let genotype: Genotype
+        //let phenotype: Phenotype
+        //let maxSegmentWidth: CGFloat
+        //let maxSegmentWidth: CGFloat
+        //let maxTotalSegments: Int
+        //let stalkStrength: CGFloat
+        //let firstLeafSegment: Int
+        //let leafFrequency: Int
+        //let maxLeafLength: CGFloat
+        //var fh: CGFloat
+        //var fl: CGFloat
+        //var flowerColor: Dictionary
+        //let forwardGrowthRate: CGFloat
+        //let outwardGrowthRate: CGFloat
+        //let leafGrowthRate: CGFloat
+        //let leafArcHeight: CGFloat
+        //var seedEnergy: CGFloat
+        //var energy: CGFloat
+
     init( sourceSeed: Seed ) {
         plantCount += 1
         self.id = plantCount
         self.sourceSeed = sourceSeed
         self.generation = sourceSeed.generation
-        //self.germinationYear = currentYear
-    }
+            //self.germinationYear = currentYear
+        self.maxEnergyLevel = self.segmentCount * energyStoreFactor
+            //self.genotype: Genotype = sourceSeed.genotype
+            //self.phenotype: Phenotype = sourceSeed.phenotype
+            //self.maxSegmentWidth = phenotype.maxSegmentWidthValue
+            //self.maxSegmentWidth = phenotype.maxSegmentWidthValue  // maximum segment width (in pixels)
+            //self.maxTotalSegments = phenotype.maxTotalSegmentsValue  // maximum total number of segments at maturity
+            //self.stalkStrength = phenotype.stalkStrengthValue
+            //self.firstLeafSegment = phenotype.firstLeafSegmentValue  // segment on which first leaf set grows
+            //self.leafFrequency = phenotype.leafFrequencyValue  // number of segments until next leaf set
+            //self.maxLeafLength = maxSegmentWidth * phenotype.maxLeafLengthValue  // maximum leaf length at maturity
+            //self.fh = phenotype.flowerHueValue; if fh > 65 { fh += 100 }  // flower hue (omits greens)
+            //self.fl = phenotype.flowerLightnessValue; if fl > 70 { fl += 25 }  // flower lightness
+            //self.flowerColor = [ "h": fh, "l": fl }]  // flower color ( hue, lightness)
+            //self.forwardGrowthRate = maxSegmentWidth*2  // rate of cross span increase per frame
+            //self.outwardGrowthRate = forwardGrowthRate * CGFloat.random(in: 0.18...0.22) // rate forward span widens
+            //self.leafGrowthRate = forwardGrowthRate * CGFloat.random(in: 1.4...1.6)  // leaf growth rate
+            //self.leafArcHeight = CGFloat.random(in: 0.3...0.4)  // arc height (as ratio of leaf length)
+            //self.seedEnergy = maxTotalSegments*275  // energy contained in seed
+            //self.energy = seedEnergy  // energy (starts with seed energy at germination)
+        }
     
     var sourceSeedHasGerminated: Bool = false
     var sourceSeedHasBeenRemoved: Bool = false
     var age: Int = 0  // plant age in worldtime units (frames)
-    
-//    this.segments = []; this.segmentCount = 0;
-//    this.flowers = []; this.flowerCount = 0;
-//    this.xLocation = null;
-//    this.maxEnergyLevel = this.segmentCount * energyStoreFactor;
-//    this.hasFlowers = false;
-//    this.pollenPadColor = C.pp;  // pollen pad color
-//    this.isAlive = true;
-//    this.hasBeenEliminatedByPlayer = false;
-//    this.hasReachedOldAge = false;
-//    this.oldAgeReduction = 0;  // (energy reduction per plant iteration, when plant is dying of old age)
-//    this.hasCollapsed = false;
-//    this.isActive = true;  // (inactive plants are rendered but ignored by all other local plant & light iterations)
-//    this.hasDecomposed = false;  // decomposed plants are compressed to floor y-value and ready to be removed
-//    this.opacity = 1;
-//    this.hasBeenRemoved = false;
-//    //base segment (values assigned at source seed germination)
-//    this.xLocation = null;  // x value where plant is rooted to the ground
-//    this.ptB1 = null;  // base point 1
-//    this.ptB2 = null;  // base point 2
-//    this.spB = null;  // adds base span
-//    //genes
-//    this.genotype = this.sourceSeed.genotype;
-//    this.phenotype = this.sourceSeed.phenotype;
-//    var ph = this.phenotype;
-//    this.maxSegmentWidth = ph.maxSegmentWidthValue;  // maximum segment width (in pixels)
-//    this.maxTotalSegments = ph.maxTotalSegmentsValue;  // maximum total number of segments at maturity
-//    this.stalkStrength = ph.stalkStrengthValue;
-//    this.firstLeafSegment = ph.firstLeafSegmentValue;  // (segment on which first leaf set grows)
-//    this.leafFrequency = ph.leafFrequencyValue;  // (number of segments until next leaf set)
-//    this.maxLeafLength = this.maxSegmentWidth * ph.maxLeafLengthValue;  // maximum leaf length at maturity
-//    this.fh = ph.flowerHueValue; if ( this.fh > 65 ) { this.fh += 100; }  // flower hue (omits greens)
-//    this.fl = ph.flowerLightnessValue; if ( this.fl > 70 ) { this.fl += 25; }  // flower lightness
-//    //gene combinations
-//    this.flowerColor = { h: this.fh, l: this.fl };  // flower color ( hue, lightness)
-//    //non-gene qualities
-//    this.forwardGrowthRate = gravity * this.maxSegmentWidth*2;  // (rate of cross span increase per frame)
-//    this.outwardGrowthRate = this.forwardGrowthRate * Tl.rfb(0.18,0.22);  // (rate forward span widens / frame)
-//    this.leafGrowthRate = this.forwardGrowthRate * Tl.rfb(1.4,1.6);  // leaf growth rate
-//    this.leafArcHeight = Tl.rfb(0.3,0.4);  // arc height (as ratio of leaf length)
-//    this.maxFlowerBaseWidth = 1;  // max flower base width, in units of plant maxSegmentWidth
-//    this.flowerBudHeight = 1;  // bud height ( from hex top, in units of hex heights )
-//    //energy
-//    this.seedEnergy = this.maxTotalSegments*275;  // energy contained in seed
-//    this.energy = this.seedEnergy;  // energy (starts with seed energy at germination)
-    
+        //var segments: [Segment] = []
+    var segmentCount: CGFloat = 0
+        //var flower: Flower? = nil
+    var hasFlowers: Bool = false
+    var pollenPadColor: Dictionary = color["pp"]!  // pollen pad color
+    var isAlive: Bool = true
+    var hasBeenEliminatedByPlayer: Bool = false
+        //var hasReachedOldAge: Bool = false
+        //var oldAgeReduction: CGFloat = 0  // energy reduction per plant iteration, when plant is dying of old age
+    var hasCollapsed: Bool = false
+    var isActive: Bool = true  // inactive plants are rendered but ignored by plant & light iterations
+    var hasDecomposed: Bool = false  // decomposed plants are compressed to floor y-value and ready to be removed
+    var opacity: CGFloat = 1
+    var hasBeenRemoved: Bool = false
+    var xLocation: CGFloat? = nil  // x value where plant is rooted to the ground
+    var ptB1: Point? = nil  // base point 1
+    var ptB2: Point? = nil  // base point 2
+    var spB: Span? = nil  // adds base span
+        //let maxFlowerBaseWidth: CGFloat = 1  // max flower base width, in units of plant maxSegmentWidth
+        //let flowerBudHeight: CGFloat = 1  // bud height (from hex top, in units of hex heights)
+
 }
 
 
