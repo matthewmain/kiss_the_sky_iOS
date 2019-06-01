@@ -22,7 +22,7 @@ class Span {
     let id: Int
     let p1: Point
     let p2: Point
-    let length: CGFloat  // length
+    let length: CGFloat
     let spring: SKPhysicsJointSpring
     
     init(connecting point1: Point, and point2: Point) {
@@ -32,8 +32,8 @@ class Span {
         self.p2 = point2
         self.length = distance(from: p1.position, to: p2.position)
         self.spring = SKPhysicsJointSpring.joint(withBodyA: point1.physicsBody!, bodyB: point2.physicsBody!, anchorA: point1.position, anchorB: point2.position)
-        self.spring.frequency = 0.0  // stiffness: 0.0, default, is rigid; but values >0 increase from loose to stiff
-        self.spring.damping = 0.0  // friction: 0.0 is default; increasing values add more friction, i.e. energy loss
+        spring.frequency = 0.0  // stiffness: 0.0, default, is rigid; but values >0 increase from loose to stiff
+        spring.damping = 0.0  // friction: 0.0 is default; increasing values add more friction, i.e. energy loss
     }
     
 }
@@ -46,3 +46,9 @@ func addSpan(connecting point1: Point, and point2: Point) -> Span {
 }
 
 
+
+func spanMidPoint(span: Span) -> CGPoint {
+    let midX: CGFloat = ( span.p1.position.x + span.p2.position.x ) / 2
+    let midY: CGFloat = ( span.p1.position.y + span.p2.position.y ) / 2
+    return CGPoint(x: midX, y: midY)
+}

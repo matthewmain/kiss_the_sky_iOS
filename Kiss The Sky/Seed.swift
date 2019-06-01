@@ -28,11 +28,11 @@ class Seed {
     let generation: Int
         //let genotype: Genotype
         //let phenotype: Phenotype
+    let baseWidth: CGFloat
+    let tipWidth: CGFloat
     let point1: Point
     let point2: Point
     let span: Span
-    let baseWidth: CGFloat
-    let tipWidth: CGFloat
     let spanLength: CGFloat
     var point1PreviousPosition: CGPoint?
     var point2PreviousPosition: CGPoint?
@@ -40,20 +40,20 @@ class Seed {
     init(parentPlant: Plant?/*, zygoteGenotype: Genotype*/) {
         seedCount += 1
         self.id = seedCount
-//        if parentPlant != nil {
-//            self.parentPlantId = parentPlant!.id
-//            self.generation = parentPlant!.generation + 1
-//            //this.sw = Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHcH.l/2;  // seed width
-//            //var p1 = spanMidPoint( Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHbM );  // positions seed p1 at bottom of parent flower's hex
-//            //this.p1 = addPt( pctFromXVal(p1.x), pctFromYVal(p1.y) );  // seed point 1
-//            //var p2 = spanMidPoint( Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHtM );  // positions seed p2 at top of parent flower's hex
-//            //this.p2 = addPt( pctFromXVal(p2.x), pctFromYVal(p2.y) );  // seed point 2
-//            //this.generation = Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).generation + 1;
+        self.baseWidth = initialSeedWidth
+        self.tipWidth = baseWidth*0.35
+//      if parentPlant != nil {
+//        this.sw = Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHcH.l/2;  // seed width
+//            //self.parentPlantId = parentPlant!.id
+//            //self.generation = parentPlant!.generation+1
+//            var p1 = spanMidPoint( Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHbM );  // positions seed p1 at bottom of parent flower's hex
+//            this.p1 = addPt( pctFromXVal(p1.x), pctFromYVal(p1.y) );  // seed point 1
+//            var p2 = spanMidPoint( Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHtM );  // positions seed p2 at top of parent flower's hex
+//            this.p2 = addPt( pctFromXVal(p2.x), pctFromYVal(p2.y) );  // seed point 2
+//            this.generation = Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).generation + 1;
 //        } else {
             self.parentPlantId = nil
             self.generation = 1
-            self.baseWidth = initialSeedWidth
-            self.tipWidth = baseWidth*0.35
             self.spanLength = baseWidth*1.6
             self.point1 = addPoint(at: CGPoint(x: CGFloat.random(in: screenWidth*0.2 ..< screenWidth*0.8), y: CGFloat.random(in: screenHeight*0.8 ..< screenHeight*0.95) ), radius: baseWidth/2 )
             self.point2 = addPoint(at: CGPoint(x: point1.position.x+spanLength, y: point1.position.y ), radius: tipWidth/2 )
@@ -65,6 +65,7 @@ class Seed {
 //        }
         //self.genotype = zygoteGenotype
         //self.phenotype = generatePhenotype(self.genotype)
+
         self.resultingPlantId = createPlant(sourceSeed: self).id
     }
     
@@ -133,23 +134,31 @@ func renderSeeds() {
 
 func handleSeedUntilGermination(seed: Seed) {
     if !seed.hasLanded {
-        //prevent seed from falling through floor on initial tumble
-        if seed.point1.position.y < seed.baseWidth/2 { seed.point1.position.y = seed.baseWidth/2 }
-        if seed.point2.position.y < seed.tipWidth/2 { seed.point2.position.y = seed.tipWidth/2 }
-        //plant seed once it settles onto the ground
-        let p1OnGround: Bool = seed.point1.position.y < seed.baseWidth
-        let p2OnGround: Bool = seed.point2.position.y < seed.tipWidth
-        let p1Stable: Bool = seed.point1PreviousPosition == seed.point1.position
-        let p2Stable: Bool = seed.point2PreviousPosition == seed.point2.position
-        if !seed.isPlanted && (p1OnGround || p2OnGround) && (p1Stable || p2Stable) {
-            seed.hasLanded = true
-        }
+        preventSeedFromFallingThroughFloor(seed: seed)
+        waitForSeedToLand(seed: seed)
     } else if !seed.isPlanted {
-        //plant seed once it's landed
         plantSeed(seed: seed)
     } else if !seed.hasGerminated /*&& currentSeason === "Spring"*/ {
-        //germinate seed once it's planted
         germinateSeed(seed: seed)
+    }
+}
+
+
+
+func preventSeedFromFallingThroughFloor(seed: Seed) {
+    if seed.point1.position.y < seed.baseWidth/2 { seed.point1.position.y = seed.baseWidth/2 }
+    if seed.point2.position.y < seed.tipWidth/2 { seed.point2.position.y = seed.tipWidth/2 }
+}
+
+
+
+func waitForSeedToLand(seed: Seed) {
+    let p1OnGround: Bool = seed.point1.position.y < seed.baseWidth
+    let p2OnGround: Bool = seed.point2.position.y < seed.tipWidth
+    let p1Stable: Bool = seed.point1PreviousPosition == seed.point1.position
+    let p2Stable: Bool = seed.point2PreviousPosition == seed.point2.position
+    if !seed.isPlanted && (p1OnGround || p2OnGround) && (p1Stable || p2Stable) {
+        seed.hasLanded = true
     }
 }
 
@@ -160,7 +169,7 @@ func plantSeed(seed: Seed) {
     seed.point2.physicsBody?.linearDamping = 90
     seed.point1.physicsBody?.collisionBitMask = nothingCollisionCategory
     seed.point2.physicsBody?.collisionBitMask = nothingCollisionCategory
-    if seed.point1.position.y > seed.baseWidth*0.1 {
+    if seed.point1.position.y > 0 {
         seed.point1.position.y -= 0.05
     } else {
         seed.isPlanted = true
@@ -170,16 +179,16 @@ func plantSeed(seed: Seed) {
 
 
 func germinateSeed(seed: Seed) {
-    let plant: Plant? = plants.first { $0.id == seed.resultingPlantId }
-    //    plant.xLocation = pctFromXVal( seed.p1.cx );
-    //    plant.ptB1 = addPt( plant.xLocation - 0.1, 100 );  // base point 1
-    //    plant.ptB2 = addPt( plant.xLocation + 0.1, 100 );  // base point 2
-    //    plant.ptB1.fixed = plant.ptB2.fixed = true;  // fixes base points to ground
-    //    plant.spB = addSp( plant.ptB1.id, plant.ptB2.id );  // adds base span
-    //    createSegment( plant, null, plant.ptB1, plant.ptB2 );  // creates the base segment (with "null" parent)
-    seed.hasGerminated = true
-    plant!.sourceSeedHasGerminated = true
-    //    plant.germinationYear = currentYear;
+    if let plant: Plant = plants.first(where: { $0.id == seed.resultingPlantId }) {
+        plant.xLocation = seed.point1.position.x
+        plant.ptB1 = addPoint(at: CGPoint(x: (plant.xLocation! - seed.baseWidth)*0.1, y: 0) )
+        plant.ptB2 = addPoint(at: CGPoint(x: (plant.xLocation! + seed.baseWidth)*0.1, y: 0) )
+        plant.ptB1!.physicsBody!.isDynamic = false
+        plant.ptB2!.physicsBody!.isDynamic = false
+        plant.spB = addSpan(connecting: plant.ptB1!, and: plant.ptB2!)
+        createSegment(plant: plant, parentSegment: nil, basePoint1: plant.ptB1!, basePoint2: plant.ptB2!)
+        seed.hasGerminated = true
+            //plant.germinationYear = currentYear;
+    }
 }
-
 

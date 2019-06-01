@@ -23,7 +23,8 @@ class Plant {
     let sourceSeed: Seed
     let generation: Int
         //let germinationYear: Int
-    var maxEnergyLevel: CGFloat
+    var xLocation: CGFloat?  // x value where plant is rooted to the ground
+    var maxEnergyLevel: Int
         //let genotype: Genotype
         //let phenotype: Phenotype
         //let maxSegmentWidth: CGFloat
@@ -55,7 +56,7 @@ class Plant {
             //self.maxSegmentWidth = phenotype.maxSegmentWidthValue
             //self.maxSegmentWidth = phenotype.maxSegmentWidthValue  // maximum segment width (in pixels)
             //self.maxTotalSegments = phenotype.maxTotalSegmentsValue  // maximum total number of segments at maturity
-            //self.stalkStrength = phenotype.stalkStrengthValue
+            //self.stalkStrength = phenotype.stalkStrengthValue  // *if use, implement as <span>.spring.frequency (0.0-1.0)
             //self.firstLeafSegment = phenotype.firstLeafSegmentValue  // segment on which first leaf set grows
             //self.leafFrequency = phenotype.leafFrequencyValue  // number of segments until next leaf set
             //self.maxLeafLength = maxSegmentWidth * phenotype.maxLeafLengthValue  // maximum leaf length at maturity
@@ -70,11 +71,10 @@ class Plant {
             //self.energy = seedEnergy  // energy (starts with seed energy at germination)
         }
     
-    var sourceSeedHasGerminated: Bool = false
     var sourceSeedHasBeenRemoved: Bool = false
     var age: Int = 0  // plant age in worldtime units (frames)
-        //var segments: [Segment] = []
-    var segmentCount: CGFloat = 0
+    var segments: [Segment] = []
+    var segmentCount: Int = 0
         //var flower: Flower? = nil
     var hasFlowers: Bool = false
     var pollenPadColor: Dictionary = color["pp"]!  // pollen pad color
@@ -87,7 +87,6 @@ class Plant {
     var hasDecomposed: Bool = false  // decomposed plants are compressed to floor y-value and ready to be removed
     var opacity: CGFloat = 1
     var hasBeenRemoved: Bool = false
-    var xLocation: CGFloat? = nil  // x value where plant is rooted to the ground
     var ptB1: Point? = nil  // base point 1
     var ptB2: Point? = nil  // base point 2
     var spB: Span? = nil  // adds base span
@@ -121,7 +120,7 @@ func growPlants() {
 //        let p = plant
 //        if ( p.isActive ) {
 //            p.age++;
-        if ( !plant.sourceSeedHasGerminated ) {
+        if ( !plant.sourceSeed.hasGerminated ) {
             handleSeedUntilGermination(seed: plant.sourceSeed)
         } /* else if ( !p.sourceSeedHasBeenRemoved ) { */
 //                hideAndRemoveSeed( p.sourceSeed );
@@ -163,7 +162,7 @@ func growPlants() {
 //                p.oldAgeReduction += oldAgeRate;
 //                p.energy -= p.oldAgeReduction;
 //            }
-//            if ( p.sourceSeedHasGerminated ) {
+//            if ( p.sourceSeed.hasGerminated ) {
 //                p.energy -= p.segmentCount * livEnExp;  // cost of living: reduces energy by a ratio of segment count
 //            }
 //            if ( p.isAlive && p.energy < p.maxEnergyLevel*deathEnergyLevelRatio && restrictGrowthByEnergy ) {

@@ -16,6 +16,8 @@
 		2EC16E53229E0E52005D0981 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC16E52229E0E52005D0981 /* Plant.swift */; };
 		2ECC0A3E22A1CEFA00AF92A6 /* Trackers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC0A3D22A1CEFA00AF92A6 /* Trackers.swift */; };
 		2ECC0A4022A1EA9200AF92A6 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC0A3F22A1EA9200AF92A6 /* Segment.swift */; };
+		2ECC0A4222A316F000AF92A6 /* EvolutionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC0A4122A316F000AF92A6 /* EvolutionEngine.swift */; };
+		2ECC0A4422A31D9200AF92A6 /* GeneticsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC0A4322A31D9200AF92A6 /* GeneticsHandler.swift */; };
 		2EDEE15B22984E8F0066A51A /* Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEE15A22984E8F0066A51A /* Span.swift */; };
 		2EDEE189229890360066A51A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEE188229890350066A51A /* Settings.swift */; };
 		2EEA5DE32290B2D30028BC31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEA5DE22290B2D30028BC31 /* AppDelegate.swift */; };
@@ -56,6 +58,8 @@
 		2EC16E52229E0E52005D0981 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		2ECC0A3D22A1CEFA00AF92A6 /* Trackers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trackers.swift; sourceTree = "<group>"; };
 		2ECC0A3F22A1EA9200AF92A6 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		2ECC0A4122A316F000AF92A6 /* EvolutionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionEngine.swift; sourceTree = "<group>"; };
+		2ECC0A4322A31D9200AF92A6 /* GeneticsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticsHandler.swift; sourceTree = "<group>"; };
 		2EDEE15A22984E8F0066A51A /* Span.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Span.swift; sourceTree = "<group>"; };
 		2EDEE188229890350066A51A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2EEA5DDF2290B2D30028BC31 /* Kiss The Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiss The Sky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,8 @@
 				2ECC0A3D22A1CEFA00AF92A6 /* Trackers.swift */,
 				2EC16E50229DFD5D005D0981 /* Updater.swift */,
 				2E864D8D229B5D5A009F18D8 /* Renderer.swift */,
+				2ECC0A4122A316F000AF92A6 /* EvolutionEngine.swift */,
+				2ECC0A4322A31D9200AF92A6 /* GeneticsHandler.swift */,
 				2EB07808229461A500204C17 /* Point.swift */,
 				2EDEE15A22984E8F0066A51A /* Span.swift */,
 				2E864D892299BD3A009F18D8 /* Seed.swift */,
@@ -336,9 +342,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ECC0A4422A31D9200AF92A6 /* GeneticsHandler.swift in Sources */,
 				2EEA5DE92290B2D30028BC31 /* GameScene.swift in Sources */,
 				2EC16E53229E0E52005D0981 /* Plant.swift in Sources */,
 				2E4A378122934C2400B86596 /* Configuration.swift in Sources */,
+				2ECC0A4222A316F000AF92A6 /* EvolutionEngine.swift in Sources */,
 				2ECC0A4022A1EA9200AF92A6 /* Segment.swift in Sources */,
 				2EDEE189229890360066A51A /* Settings.swift in Sources */,
 				2EB07809229461A500204C17 /* Point.swift in Sources */,

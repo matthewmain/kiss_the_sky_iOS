@@ -25,7 +25,9 @@ let screenEdgesCollisionCategory: UInt32 = 0b0001
 let solidMoveableObjectsCollisionCategory: UInt32 = 0b0010
 
 //development
-let viewDeviceFramesVisualizer: Bool = false
+var viewDeviceFramesVisualizer: Bool = false
+var viewPointsAndSpans = true
+var viewSeeds: Bool = true
 var viewStalks: Bool = true
 var viewLeaves: Bool = true
 var viewFlowers: Bool = true
@@ -45,7 +47,7 @@ var sunRayIntensity: CGFloat = 3  // total energy units per sun ray per iteratio
 var photosynthesisRatio: CGFloat = 1  // available sun energy stored by leaf at ray contact (varies by season)
 var groEnExp: CGFloat = 0.2  // growth energy expenditure rate (rate energy is expended for growth)
 var livEnExp: CGFloat = 0.1  // living energy expenditure rate (rate energy is expended for living)
-var energyStoreFactor: CGFloat = 1000  // a plant's maximum storable energy units per segment
+var energyStoreFactor: Int = 1000  // a plant's maximum storable energy units per segment
     //var oldAgeMarker: Int = 20000  // age after flower bloom when plant starts dying of old age, in worldtime units
     //var oldAgeRate: CGFloat = 0.001  // additional energy reduction per iteration after plant reaches old age
 var unhealthyEnergyLevelRatio: CGFloat = 0.075  // ratio of max energy when plant gets unhealthy (starts yellowing)

@@ -20,7 +20,7 @@ func renderAll() {
     
     shapes = []  // clears last frame's shapes from collection array
 
-    renderSeeds()
+    if viewSeeds { renderSeeds() }
     
 }
 
