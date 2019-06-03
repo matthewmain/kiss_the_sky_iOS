@@ -13,7 +13,7 @@ import GameplayKit
 
 let deviceBounds = UIScreen.main.fixedCoordinateSpace.bounds  // current device screen size (call as .height or .width)
 let screenWidth: CGFloat = deviceBounds.width
-let screenHeight: CGFloat = deviceBounds.height    // UNIVERSAL UNIT
+let screenHeight: CGFloat = deviceBounds.height    // UNIVERSAL UNIT FOR ALL PHYSICAL OBJECTS
 
 
 

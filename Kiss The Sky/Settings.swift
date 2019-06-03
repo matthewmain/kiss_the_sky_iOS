@@ -41,7 +41,7 @@ var runPollinationAnimations: Bool = true
 //plant life cycle
 var allowSelfPollination: Bool = true
 var pollinationFrequency: Int = 5  // as average number of pollination events per open flower per length of summer
-var maxSeedsPerFlowerRatio: CGFloat = 0.333  // max seeds per flower (as ratio of plant's max total segments)
+var maxSeedsPerFlowerRatio: CGFloat = 0.333  // (as ratio of plant's max total segments)
 var restrictGrowthByEnergy: Bool = true  // restricts plant growth by energy level (if false, plants grow freely)
 var sunRayIntensity: CGFloat = 3  // total energy units per sun ray per iteration
 var photosynthesisRatio: CGFloat = 1  // available sun energy stored by leaf at ray contact (varies by season)

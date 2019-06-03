@@ -13,4 +13,4 @@ import SpriteKit
 ////////////////// GENETICS HANDLER //////////////////
 
 
-let EV = EvolutionEngine()
+let ev = EvolutionEngine()
