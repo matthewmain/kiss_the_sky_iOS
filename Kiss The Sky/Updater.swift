@@ -12,6 +12,10 @@ import SpriteKit
 
 ////////////////// UPDATER //////////////////
 
+func initializeGameEnvironment() {
+    createSkyPlantGenes()
+}
+
 
 func updateAll() {
     

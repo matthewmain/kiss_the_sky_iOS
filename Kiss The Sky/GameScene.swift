@@ -39,6 +39,7 @@ class GameScene: SKScene {
         addBackground()
         addCamera()
         setUpGestureRecognizers()
+        initializeGameEnvironment()
         
         //screen edges physics body
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)

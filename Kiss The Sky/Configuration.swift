@@ -45,9 +45,18 @@ extension CGPoint {
 ///////// HELPER FUNCTIONS /////////
 
 
+//distance between two CGPoints
 func distance(from point1: CGPoint, to point2: CGPoint ) -> CGFloat {
     return hypot(point1.x - point2.x, point1.y - point2.y)
 }
 
+//random rounded CGFloat between two CGFloats
+func randcgfR(_ n1: CGFloat, _ n2: CGFloat) -> CGFloat {
+    return CGFloat.random(in: n1...n2).rounded()
+}
 
+//random CGFloat between two CGFloats
+func randcgf(_ n1: CGFloat, _ n2: CGFloat) -> CGFloat {
+    return CGFloat.random(in: n1...n2)
+}
 

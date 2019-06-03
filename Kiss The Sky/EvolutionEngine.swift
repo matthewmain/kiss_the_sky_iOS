@@ -6,7 +6,7 @@
 //  Copyright © 2019 Matthew Main. All rights reserved.
 //
 
-import SpriteKit
+import CoreGraphics
 
 
 
@@ -36,33 +36,27 @@ class EvolutionEngine {
         }
     }
     
-    //mutation parameters
-    struct MutationParameters {
-        let frequency: Int
-        let range: CGFloat
-        let min: CGFloat?
-        let max: CGFloat?
-        init(frequency: Int, range: CGFloat, min: CGFloat, max: CGFloat) {
-            self.frequency = frequency
-            self.range = range
-            self.min = min
-            self.max = max
-        }
-    }
-
     //gene locus (a feature; e.g. eye color)
     struct Gene {
         let allele1: Allele
         let allele2: Allele
         let dominanceType: DominanceType
         let expressionType: ExpressionType
-        let mutationParameters: MutationParameters
-        init(allele1: Allele, allele2: Allele, dominanceType: DominanceType, expressionType: ExpressionType, mutationParameters: MutationParameters) {
+        let initValue: CGFloat
+        let mutationFrequency: Int
+        let mutationRange: CGFloat
+        let mutationMinValue: CGFloat?
+        let mutationMaxValue: CGFloat?
+        init(allele1: Allele, allele2: Allele, dominanceType: DominanceType, expressionType: ExpressionType, initValue: CGFloat, mutationFrequency: Int, mutationRange: CGFloat, mutationMinValue: CGFloat?, mutationMaxValue: CGFloat?) {
             self.allele1 = allele1
             self.allele2 = allele2
             self.dominanceType = dominanceType
             self.expressionType = expressionType
-            self.mutationParameters = mutationParameters
+            self.initValue = initValue
+            self.mutationFrequency = mutationFrequency
+            self.mutationRange = mutationRange
+            self.mutationMinValue = mutationMinValue
+            self.mutationMaxValue = mutationMaxValue
         }
     }
         
@@ -124,15 +118,21 @@ class EvolutionEngine {
                  geneName: String,
                  domType: DominanceType,
                  expType: ExpressionType,
-                 initVal: CGFloat,
-                 mutationParameters: MutationParameters ) -> Gene {
-        let gene = Gene(allele1: Allele(value: initVal, dominanceIndex: 0.5 ),
-                        allele2: Allele(value: initVal, dominanceIndex: 0.5 ),
+                 initValue: CGFloat,
+                 mutationFrequency: Int,
+                 mutationRange: CGFloat,
+                 mutationMinValue: CGFloat?,
+                 mutationMaxValue: CGFloat?) {
+        let gene = Gene(allele1: Allele(value: initValue, dominanceIndex: 0.5 ),
+                        allele2: Allele(value: initValue, dominanceIndex: 0.5 ),
                         dominanceType: domType,
                         expressionType: expType,
-                        mutationParameters: mutationParameters)
+                        initValue: initValue,
+                        mutationFrequency: mutationFrequency,
+                        mutationRange: mutationRange,
+                        mutationMinValue: mutationMinValue,
+                        mutationMaxValue: mutationMaxValue)
         genome.genes[geneName] = gene
-        return gene
     }
 
     //creates a new standard genotype from a species genome (for genetically identical organisms)
@@ -159,9 +159,9 @@ class EvolutionEngine {
 
     //mutates an allele (changes its value according to its expression type and within its mutation range)
     func mutate(genome: Genome, gene: Gene, allele: Allele ) -> Allele {
-        let range: CGFloat = gene.mutationParameters.range  // range (of a single mutation)
-        let min: CGFloat? = gene.mutationParameters.min  // min value (mutation cannot go below)
-        let max: CGFloat? = gene.mutationParameters.max  // max value (mutation cannot go above)
+        let range: CGFloat = gene.mutationRange  // range (of a single mutation)
+        let min: CGFloat? = gene.mutationMinValue  // min value (mutation cannot go below)
+        let max: CGFloat? = gene.mutationMaxValue  // max value (mutation cannot go above)
         let originalAlleleVal: CGFloat = allele.value
         var mutatedAlleleVal: CGFloat = CGFloat.random(in: allele.value-range/2...allele.value+range/2)  // random decimal value in mutation range
         if gene.expressionType == .count {
@@ -169,9 +169,7 @@ class EvolutionEngine {
         }
         if ( ( min == nil || mutatedAlleleVal >= min!) && ( max == nil || mutatedAlleleVal <= max!) ) {
             allele.value = mutatedAlleleVal  // (mutates allele value if within min and max value parameters)
-        }
-        if ( allele.value != originalAlleleVal ) {
-            allele.dominanceIndex = CGFloat.random(in: 0...1)  // (assigns new random dominance index if allele has mutated)
+            if allele.value != originalAlleleVal { allele.dominanceIndex = CGFloat.random(in: 0...1) }
         }
         return allele
     }
@@ -186,14 +184,14 @@ class EvolutionEngine {
             let parent2Allele = Int.random(in: 1...2) == 1 ? parentGenotype2!.genes[geneName]!.allele1 : parentGenotype2!.genes[geneName]!.allele2
             var newAllele1 = Allele(value: parent1Allele.value, dominanceIndex: parent1Allele.dominanceIndex)
             var newAllele2 = Allele(value: parent2Allele.value, dominanceIndex: parent2Allele.dominanceIndex)
-            if ( Int.random(in: 1...gene.mutationParameters.frequency) == 1 ) {
+            if ( Int.random(in: 1...gene.mutationFrequency) == 1 ) {
                 if ( Int.random(in: 1...2) == 1 ) {
                     newAllele1 = mutate(genome: genome, gene: gene, allele: newAllele1)
                 } else {
                     newAllele2 = mutate(genome: genome, gene: gene, allele: newAllele2)
                 }
             }
-            childGenotype.genes[geneName] = Gene(allele1: newAllele1, allele2: newAllele2, dominanceType: gene.dominanceType, expressionType: gene.expressionType, mutationParameters: gene.mutationParameters)
+            childGenotype.genes[geneName] = Gene(allele1: newAllele1, allele2: newAllele2, dominanceType: gene.dominanceType, expressionType: gene.expressionType, initValue: gene.initValue, mutationFrequency: gene.mutationFrequency, mutationRange: gene.mutationRange, mutationMinValue: gene.mutationMinValue, mutationMaxValue: gene.mutationMaxValue)
         }
         return childGenotype
     }
