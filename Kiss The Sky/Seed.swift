@@ -26,8 +26,8 @@ class Seed {
     let parentPlantId: Int?
     var resultingPlantId: Int?
     let generation: Int
-        //let genotype: Genotype
-        //let phenotype: Phenotype
+    let genotype: EvolutionEngine.Genotype
+    let phenotype: EvolutionEngine.Phenotype
     let baseWidth: CGFloat
     let tipWidth: CGFloat
     let point1: Point
@@ -37,15 +37,13 @@ class Seed {
     var point1PreviousPosition: CGPoint?
     var point2PreviousPosition: CGPoint?
     
-    init(parentPlant: Plant?/*, zygoteGenotype: Genotype*/) {
+    init(parentPlant: Plant?, zygoteGenotype: EvolutionEngine.Genotype ) {
         seedCount += 1
         self.id = seedCount
-        self.baseWidth = initialSeedWidth
-        self.tipWidth = baseWidth*0.35
-//      if parentPlant != nil {
-//        this.sw = Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHcH.l/2;  // seed width
-//            //self.parentPlantId = parentPlant!.id
-//            //self.generation = parentPlant!.generation+1
+//        if parentPlant != nil {
+//            this.sw = Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHcH.l/2; (*update after flowers built)
+//            self.parentPlantId = parentPlant!.id
+//            self.generation = parentPlant!.generation+1
 //            var p1 = spanMidPoint( Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHbM );  // positions seed p1 at bottom of parent flower's hex
 //            this.p1 = addPt( pctFromXVal(p1.x), pctFromYVal(p1.y) );  // seed point 1
 //            var p2 = spanMidPoint( Tl.obById( Tl.obById( plants, this.parentPlantId ).flowers, this.parentFlowerId ).spHtM );  // positions seed p2 at top of parent flower's hex
@@ -54,6 +52,8 @@ class Seed {
 //        } else {
             self.parentPlantId = nil
             self.generation = 1
+            self.baseWidth = initialSeedWidth
+            self.tipWidth = baseWidth*0.35
             self.spanLength = baseWidth*1.6
             self.point1 = addPoint(at: CGPoint(x: CGFloat.random(in: screenWidth*0.2 ..< screenWidth*0.8), y: CGFloat.random(in: screenHeight*0.8 ..< screenHeight*0.95) ), radius: baseWidth/2 )
             self.point2 = addPoint(at: CGPoint(x: point1.position.x+spanLength, y: point1.position.y ), radius: tipWidth/2 )
@@ -63,10 +63,11 @@ class Seed {
             point1.physicsBody?.restitution = seedRestitution
             point2.physicsBody?.restitution = seedRestitution
 //        }
-        //self.genotype = zygoteGenotype
-        //self.phenotype = generatePhenotype(self.genotype)
-
+        
+        self.genotype = zygoteGenotype
+        self.phenotype = EV.generatePhenotype(genotype: self.genotype)
         self.resultingPlantId = createPlant(sourceSeed: self).id
+        
     }
     
     var opacity: CGFloat = 1.0
@@ -80,9 +81,9 @@ class Seed {
 
 
 
-func createSeed(parentPlant: Plant?/*, zygoteGenotype: Genotype*/) /*-> Seed*/ {
-    seeds.append( Seed(parentPlant: parentPlant/*, zygoteGenotype: zygoteGenotype*/) )
-    //return seeds[seeds.count-1]
+func createSeed(parentPlant: Plant?, zygoteGenotype: EvolutionEngine.Genotype) -> Seed {
+    seeds.append( Seed(parentPlant: parentPlant, zygoteGenotype: zygoteGenotype) )
+    return seeds[seeds.count-1]
 }
 
 

@@ -25,24 +25,23 @@ class Plant {
         //let germinationYear: Int
     var xLocation: CGFloat?  // x value where plant is rooted to the ground
     var maxEnergyLevel: Int
-        //let genotype: Genotype
-        //let phenotype: Phenotype
-        //let maxSegmentWidth: CGFloat
-        //let maxSegmentWidth: CGFloat
-        //let maxTotalSegments: Int
-        //let stalkStrength: CGFloat
-        //let firstLeafSegment: Int
-        //let leafFrequency: Int
-        //let maxLeafLength: CGFloat
-        //var fh: CGFloat
-        //var fl: CGFloat
-        //var flowerColor: Dictionary
-        //let forwardGrowthRate: CGFloat
-        //let outwardGrowthRate: CGFloat
-        //let leafGrowthRate: CGFloat
-        //let leafArcHeight: CGFloat
-        //var seedEnergy: CGFloat
-        //var energy: CGFloat
+    let genotype: EvolutionEngine.Genotype
+    let phenotype: EvolutionEngine.Phenotype
+    let maxSegmentWidth: CGFloat
+    let maxTotalSegments: Int
+    let stalkStrength: CGFloat
+    let firstLeafSegment: Int
+    let leafFrequency: Int
+    let maxLeafLength: CGFloat
+    var flowerHue: CGFloat
+    var flowerLightness: CGFloat
+    var flowerColor: [String:CGFloat]
+    let forwardGrowthRate: CGFloat
+    let outwardGrowthRate: CGFloat
+    let leafGrowthRate: CGFloat
+    let leafArcHeight: CGFloat
+    var seedEnergy: Int
+    var energy: Int
 
     init( sourceSeed: Seed ) {
         plantCount += 1
@@ -51,25 +50,26 @@ class Plant {
         self.generation = sourceSeed.generation
             //self.germinationYear = currentYear
         self.maxEnergyLevel = self.segmentCount * energyStoreFactor
-            //self.genotype: Genotype = sourceSeed.genotype
-            //self.phenotype: Phenotype = sourceSeed.phenotype
-            //self.maxSegmentWidth = phenotype.maxSegmentWidthValue
-            //self.maxSegmentWidth = phenotype.maxSegmentWidthValue  // maximum segment width (in pixels)
-            //self.maxTotalSegments = phenotype.maxTotalSegmentsValue  // maximum total number of segments at maturity
-            //self.stalkStrength = phenotype.stalkStrengthValue  // *if use, implement as <span>.spring.frequency (0.0-1.0)
-            //self.firstLeafSegment = phenotype.firstLeafSegmentValue  // segment on which first leaf set grows
-            //self.leafFrequency = phenotype.leafFrequencyValue  // number of segments until next leaf set
-            //self.maxLeafLength = maxSegmentWidth * phenotype.maxLeafLengthValue  // maximum leaf length at maturity
-            //self.fh = phenotype.flowerHueValue; if fh > 65 { fh += 100 }  // flower hue (omits greens)
-            //self.fl = phenotype.flowerLightnessValue; if fl > 70 { fl += 25 }  // flower lightness
-            //self.flowerColor = [ "h": fh, "l": fl }]  // flower color ( hue, lightness)
-            //self.forwardGrowthRate = maxSegmentWidth*2  // rate of cross span increase per frame
-            //self.outwardGrowthRate = forwardGrowthRate * CGFloat.random(in: 0.18...0.22) // rate forward span widens
-            //self.leafGrowthRate = forwardGrowthRate * CGFloat.random(in: 1.4...1.6)  // leaf growth rate
-            //self.leafArcHeight = CGFloat.random(in: 0.3...0.4)  // arc height (as ratio of leaf length)
-            //self.seedEnergy = maxTotalSegments*275  // energy contained in seed
-            //self.energy = seedEnergy  // energy (starts with seed energy at germination)
-        }
+        self.genotype = sourceSeed.genotype
+        self.phenotype = sourceSeed.phenotype
+        self.maxSegmentWidth = phenotype.genes["maxSegmentWidthValue"] as! CGFloat
+        self.maxTotalSegments = Int(phenotype.genes["maxTotalSegmentsValue"] as! CGFloat)
+        self.stalkStrength = phenotype.genes["stalkStrengthValue"] as! CGFloat  // (*if use, implement as <span>.spring.frequency (0.0-1.0) )
+        self.firstLeafSegment = Int(phenotype.genes["firstLeafSegmentValue"] as! CGFloat)
+        self.leafFrequency = Int(phenotype.genes["leafFrequencyValue"] as! CGFloat)
+        self.maxLeafLength = maxSegmentWidth * (phenotype.genes["maxLeafLengthValue"] as! CGFloat)
+        self.flowerHue = phenotype.genes["flowerHueValue"] as! CGFloat
+        if flowerHue > 65 { flowerHue += 100 }  // (omits greens)
+        self.flowerLightness = phenotype.genes["flowerLightnessValue"] as! CGFloat
+        if flowerLightness > 70 { flowerLightness += 25 }
+        self.flowerColor = ["hue": flowerHue, "lightness": flowerLightness]
+        self.forwardGrowthRate = maxSegmentWidth*2  // rate of cross span increase per frame
+        self.outwardGrowthRate = forwardGrowthRate * randcgf(0.18,0.22)  // rate forward span widens
+        self.leafGrowthRate = forwardGrowthRate * randcgf(1.4,1.6)
+        self.leafArcHeight = randcgf(0.3,0.4)  // (as ratio of leaf length)
+        self.seedEnergy = maxTotalSegments*275  // energy contained in seed
+        self.energy = seedEnergy  // plant energy (starts with seed energy at germination)
+    }
     
     var sourceSeedHasBeenRemoved: Bool = false
     var age: Int = 0  // plant age in worldtime units (frames)

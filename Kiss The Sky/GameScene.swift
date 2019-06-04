@@ -47,7 +47,7 @@ class GameScene: SKScene {
         physicsBody?.collisionBitMask = solidMoveableObjectsCollisionCategory
 
         //initial seeds (move later)
-        for _ in 1...10 { createSeed(parentPlant: nil) }
+        for _ in 1...10 { createSeed(parentPlant: nil, zygoteGenotype: generateRandomPlantGenotype()) }
         
         //points & spans
         for point in points { addChild(point) }
