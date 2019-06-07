@@ -12,7 +12,9 @@ import CoreGraphics
 
 ////////////////// EVOLUTION ENGINE //////////////////
 
+
 class EvolutionEngine {
+    
     
     //species collection (a collection of genome objects by species name)
     var species: [String:Genome] = [:]  // as ["<speciesName>":<genomeInstance>]
@@ -36,6 +38,7 @@ class EvolutionEngine {
         }
     }
     
+    
     //gene locus (a feature; e.g. eye color)
     struct Gene {
         let allele1: Allele
@@ -43,7 +46,7 @@ class EvolutionEngine {
         let dominanceType: DominanceType
         let expressionType: ExpressionType
         let initValue: CGFloat
-        let mutationFrequency: Int
+        let mutationFrequency: Int  // frequency as average meiosis events per mutation; higher is less frequent
         let mutationRange: CGFloat
         let mutationMinValue: CGFloat?
         let mutationMaxValue: CGFloat?
@@ -59,7 +62,8 @@ class EvolutionEngine {
             self.mutationMaxValue = mutationMaxValue
         }
     }
-        
+    
+    
     //genome (all of a species' genes; i.e., a blueprint for a generic body)
     class Genome {
         let reproductionType: ReproductionType
@@ -69,6 +73,7 @@ class EvolutionEngine {
         var genes: [String:Gene] = [:] // (as ["<geneName>": <geneInstance>])
     }
 
+    
     //genotype (all of an organism's allele pairs; i.e., a blueprint for a specific body**)
     struct Genotype {
         var genes: [String:Gene] = [:] // (as ["<geneName>": <geneInstance>])
@@ -81,6 +86,7 @@ class EvolutionEngine {
         }
     }
 
+    
     //phenotype (all of an organism's expressed traits; i.e., a body)
     struct Phenotype {
         var genes: [String:Any] = [:]  // (as ["<traitNameValue>": <value>])
@@ -113,6 +119,7 @@ class EvolutionEngine {
         return species[speciesName]!
     }
 
+    
     //adds a new gene (with identical prototype alleles of neutral dominance) to a species genome
     func addGene(genome: Genome,
                  geneName: String,
@@ -135,11 +142,13 @@ class EvolutionEngine {
         genome.genes[geneName] = gene
     }
 
+    
     //creates a new standard genotype from a species genome (for genetically identical organisms)
     func newStandardFirstGenGenotype(genome: Genome) -> Genotype {
         return Genotype(genome: genome)
     }
 
+    
     //creates a new random genotype from a species genome (for genetically distinct organisms)
     func newRandomizedFirstGenGenotype(genome: Genome ) -> Genotype{
         var randomizedGenotype = Genotype(genome: genome)
@@ -152,11 +161,13 @@ class EvolutionEngine {
         return randomizedGenotype
     }
 
+    
     //generates a phenotype from a genotype
     func generatePhenotype(genotype: Genotype) -> Phenotype {
         return Phenotype(genotype: genotype)
     }
 
+    
     //mutates an allele (changes its value according to its expression type and within its mutation range)
     func mutate(genome: Genome, gene: Gene, allele: Allele ) -> Allele {
         let range: CGFloat = gene.mutationRange  // range (of a single mutation)
@@ -174,6 +185,7 @@ class EvolutionEngine {
         return allele
     }
 
+    
     //performs meiosis (returns a new child genotype from a parent genotype or genotypes)
     func meiosis(genome: Genome, parentGenotype1: Genotype, parentGenotype2: Genotype? = nil ) -> Genotype{
         var parentGenotype2 = parentGenotype2
@@ -195,6 +207,7 @@ class EvolutionEngine {
         }
         return childGenotype
     }
+    
 
 }
 
@@ -207,7 +220,6 @@ class EvolutionEngine {
 
 /////-- Notes --/////
 
-//*frequency as average meiosis events per mutation; higher is less frequent
 //**in this model, an entire genotype is contained on a single autosome
 
 

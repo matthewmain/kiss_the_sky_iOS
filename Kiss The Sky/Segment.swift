@@ -14,7 +14,6 @@ import SpriteKit
 
 
 class Segment {
-    
     let id: Int
     let plantId: Int
     let parentSegmentId: Int?
@@ -33,7 +32,6 @@ class Segment {
     var spCdP: Span?
     var spCuP: Span?
         //var skins: [Skin] = []  // (*omit segment skins in favor a single stalk path)
-
     init( plant: Plant, parentSegment: Segment?, basePoint1: Point, basePoint2: Point ) {
         self.id = plant.segmentCount
         self.plantId = plant.id
@@ -63,7 +61,6 @@ class Segment {
                 //spCuP.spring.frequency = plant.stalkStrength
         }
     }
-    
     var hasChild: Bool = false
     var hasLeaves: Bool = false
     var hasLeafScaffolding: Bool = false
@@ -77,7 +74,6 @@ class Segment {
     var clI: Dictionary = color["hil"]!  // inner line color (slightly darker green than leaf fill when healthy)
     var clL: Dictionary = color["hlf"]!  // leaf color (green when healthy)
     var clLS: Dictionary = color["hls"]!  // leaf shadow color (barely opaque black when healthy)
-
 }
 
 
@@ -88,3 +84,5 @@ func createSegment(plant: Plant, parentSegment: Segment?, basePoint1: Point, bas
     plant.segments.insert( Segment( plant: plant, parentSegment: parentSegment, basePoint1: basePoint1, basePoint2: basePoint2 ), at: 0)
     if (parentSegment != nil) { parentSegment!.hasChild = true }
 }
+
+

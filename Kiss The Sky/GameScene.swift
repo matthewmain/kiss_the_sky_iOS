@@ -16,7 +16,6 @@ let screenWidth: CGFloat = deviceBounds.width
 let screenHeight: CGFloat = deviceBounds.height    // UNIVERSAL UNIT FOR ALL PHYSICAL OBJECTS
 
 
-
 class GameScene: SKScene {
     
     var entities = [GKEntity]()
@@ -45,19 +44,20 @@ class GameScene: SKScene {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody?.categoryBitMask = screenEdgesCollisionCategory
         physicsBody?.collisionBitMask = solidMoveableObjectsCollisionCategory
-
+        currentPhysicsWorld = self.physicsWorld
+        
         //initial seeds (move later)
-        for _ in 1...10 { createSeed(parentPlant: nil, zygoteGenotype: generateRandomPlantGenotype()) }
-        
-        //points & spans
-        for point in points { addChild(point) }
-        for span in spans { physicsWorld.add(span.spring) }
-        
+        for _ in 1...1 { createSeed(parentPlant: nil, zygoteGenotype: generateRandomPlantGenotype()) }
+
     }
     
     
     
     override func update(_ currentTime: CFTimeInterval) {
+        
+        //add new points and span springs
+        addNewPointsAsChildren()
+        addNewSpringsToPhysicsWorld()
         
         //update all calculations
         updateAll()
@@ -72,6 +72,7 @@ class GameScene: SKScene {
         removeChildren(in: shapes)  // clears last frame's shape children from GameScene
         renderAll()  // renders new frame's shapes
         for shape in shapes { addChild(shape) }  // adds new shapes as children to GameScene
+        
         
     }
     
@@ -104,6 +105,26 @@ class GameScene: SKScene {
         pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
         view.addGestureRecognizer(pinchRecognizer)
     }
+    
+    
+    func addNewPointsAsChildren() {
+        if pointsToAddAsChildren.count > 0 {
+            for point in pointsToAddAsChildren {
+                addChild(point)
+                pointsToAddAsChildren.remove(at: 0)
+            }
+        }
+    }
+    
+    func addNewSpringsToPhysicsWorld() {
+        if spanSpringsToAddToPhysicsWorld.count > 0 {
+            for spring in spanSpringsToAddToPhysicsWorld {
+                physicsWorld.add(spring)
+                spanSpringsToAddToPhysicsWorld.remove(at: 0)
+            }
+        }
+    }
+    
     
 }
 
@@ -154,6 +175,3 @@ extension GameScene {
     
     
 }
-
-
-

@@ -28,3 +28,5 @@ var gameOverDisplayed: Bool = false
 var gameWinFlowerAnimationDisplayed: Bool = false
 var stopGameWinFlowersAnimation: Bool = false
 var gameWinFlowerAnimationComplete: Bool = false
+
+var currentPhysicsWorld: SKPhysicsWorld?  // value assigned in GameScene.swift (for removing SKPhysicsJointSprings from the physicsWorld)

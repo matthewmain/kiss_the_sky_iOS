@@ -21,7 +21,6 @@ var seedRestitution: CGFloat = 0.5
 
 
 class Seed {
-
     let id: Int
     let parentPlantId: Int?
     var resultingPlantId: Int?
@@ -36,7 +35,6 @@ class Seed {
     let spanLength: CGFloat
     var point1PreviousPosition: CGPoint?
     var point2PreviousPosition: CGPoint?
-    
     init(parentPlant: Plant?, zygoteGenotype: EvolutionEngine.Genotype ) {
         seedCount += 1
         self.id = seedCount
@@ -63,20 +61,16 @@ class Seed {
             point1.physicsBody?.restitution = seedRestitution
             point2.physicsBody?.restitution = seedRestitution
 //        }
-        
         self.genotype = zygoteGenotype
         self.phenotype = EV.generatePhenotype(genotype: self.genotype)
         self.resultingPlantId = createPlant(sourceSeed: self).id
-        
     }
-    
     var opacity: CGFloat = 1.0
     var path: CGMutablePath = CGMutablePath()  // updated in renderSeeds()
     var shape: SKShapeNode = SKShapeNode()  // updated in renderSeeds()
     var hasLanded: Bool = false
     var isPlanted: Bool = false
     var hasGerminated: Bool = false
-    
 }
 
 
@@ -85,7 +79,6 @@ func createSeed(parentPlant: Plant?, zygoteGenotype: EvolutionEngine.Genotype) -
     seeds.append( Seed(parentPlant: parentPlant, zygoteGenotype: zygoteGenotype) )
     return seeds[seeds.count-1]
 }
-
 
 
 func renderSeeds() {
@@ -133,24 +126,10 @@ func renderSeeds() {
 
 
 
-func handleSeedUntilGermination(seed: Seed) {
-    if !seed.hasLanded {
-        preventSeedFromFallingThroughFloor(seed: seed)
-        waitForSeedToLand(seed: seed)
-    } else if !seed.isPlanted {
-        plantSeed(seed: seed)
-    } else if !seed.hasGerminated /*&& currentSeason === "Spring"*/ {
-        germinateSeed(seed: seed)
-    }
-}
-
-
-
 func preventSeedFromFallingThroughFloor(seed: Seed) {
     if seed.point1.position.y < seed.baseWidth/2 { seed.point1.position.y = seed.baseWidth/2 }
     if seed.point2.position.y < seed.tipWidth/2 { seed.point2.position.y = seed.tipWidth/2 }
 }
-
 
 
 func waitForSeedToLand(seed: Seed) {
@@ -164,7 +143,6 @@ func waitForSeedToLand(seed: Seed) {
 }
 
 
-
 func plantSeed(seed: Seed) {
     seed.point1.physicsBody?.isDynamic = false
     seed.point2.physicsBody?.linearDamping = 90
@@ -176,7 +154,6 @@ func plantSeed(seed: Seed) {
         seed.isPlanted = true
     }
 }
-
 
 
 func germinateSeed(seed: Seed) {
@@ -193,3 +170,37 @@ func germinateSeed(seed: Seed) {
     }
 }
 
+
+func handleSeedUntilGermination(seed: Seed) {
+    if !seed.hasLanded {
+        preventSeedFromFallingThroughFloor(seed: seed)
+        waitForSeedToLand(seed: seed)
+    } else if !seed.isPlanted {
+        plantSeed(seed: seed)
+    } else if !seed.hasGerminated /*&& currentSeason === "Spring"*/ {
+        germinateSeed(seed: seed)
+    }
+}
+
+
+func removeSeed(byId id: Int) {
+    if let seedsIndex = seeds.firstIndex(where: { $0.id == id }) {
+        let seed = seeds[seedsIndex]
+        removePoint(byId: seed.point1.id)
+        removePoint(byId: seed.point2.id)
+        removeSpan(byId: seed.id)
+        seeds.remove(at: seedsIndex)
+        if let plantsIndex = plants.firstIndex(where: { $0.id == seed.parentPlantId }) {
+            plants[plantsIndex].sourceSeedHasBeenRemoved = true
+        }
+    }
+}
+
+
+func hideAndRemoveSeed(seed: Seed) {
+    if seed.opacity > 0 {
+        seed.opacity -= 0.001
+    } else {
+        removeSeed(byId: seed.id )
+    }
+}
